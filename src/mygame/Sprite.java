@@ -29,7 +29,7 @@ public class Sprite extends Geometry {
     public float height;
     
     public Sprite(float x, float y) {
-        moveVector = Vector3f.ZERO;
+        moveVector = Vector3f.ZERO.clone();
         position = getLocalTranslation();
         position.x = x;
         position.y = y;

@@ -23,15 +23,24 @@ public class CharacterSprite extends SolidSprite {
     public void update() {
         super.update();
         gravityfreedom -= 1;
-
-
-        position = position.add(moveVector);
+        if(this.getMaterial().getName().equals("goomba")){
+        System.out.println(this.getMaterial().getName());
             System.out.println(isGrounded());
             System.out.println(spacepressed);
             System.out.println(gravityfreedom);
+        }
+//            System.out.println(isGrounded());
+//            System.out.println(spacepressed);
+//            System.out.println(gravityfreedom);
+        for (int i = 0; i < level.solids.size(); i++) {
+            blockedHorizontal(level.solids.get(i));
+            blockedVertically(level.solids.get(i));
+
+        }
+        position = position.add(moveVector);
         if (!isGrounded() && (gravityfreedom <= 0 || !spacepressed)) {
             moveVector.y -= gravity;
-            System.out.println("free fall");
+//            System.out.println("free fall");
         }
         setLocalTranslation(position);
     }

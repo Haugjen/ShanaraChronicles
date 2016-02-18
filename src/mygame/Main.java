@@ -55,14 +55,16 @@ public class Main extends SimpleApplication {
         Spritefactory spritefactory = new Spritefactory(assetManager);
 
         Sprite cloud = spritefactory.makeSprite(200, 700, "cloud");
+        sprites.add(cloud);
         dirtblock = (SolidSprite) spritefactory.makeSolidSprite(0, 0, "dirtblock");
         SolidSprite dirtblock2 = (SolidSprite) spritefactory.makeSolidSprite(dirtblock.width, 0, "dirtblock");
         SolidSprite redwall = (SolidSprite) spritefactory.makeSolidSprite(200, dirtblock.height + 1, "redwall");
         SolidSprite redwall2 = (SolidSprite) spritefactory.makeSolidSprite(200, dirtblock.height + 1 + redwall.height+1, "redwall");
         player = (CharacterSprite) spritefactory.makeCharacterSprite(50, dirtblock.height + 40, "link", level01);
+        CharacterSprite goomba = (CharacterSprite) spritefactory.makeCharacterSprite(550, dirtblock.height + 140, "goomba", level01);
         startPos = player.position.clone();
         sprites.add(player);
-        sprites.add(cloud);
+        sprites.add(goomba);
 
         solids.add(redwall);
         solids.add(redwall2);
@@ -91,11 +93,11 @@ public class Main extends SimpleApplication {
             player.position = startPos.clone();
         }
         
-        for (int i = 0; i < solids.size(); i++) {
-            player.blockedHorizontal(solids.get(i));
-            player.blockedVertically(solids.get(i));
-
-        }
+//        for (int i = 0; i < solids.size(); i++) {
+//            player.blockedHorizontal(solids.get(i));
+//            player.blockedVertically(solids.get(i));
+//
+//        }
         for (int i = 0; i < sprites.size(); i++) {
             sprites.get(i).update();
         }
