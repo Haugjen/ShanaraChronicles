@@ -1,0 +1,27 @@
+MaterialDef SpriteSheet {
+ 
+    MaterialParameters {
+        Texture2D ColorMap
+        Float SizeX : 1
+        Float SizeY : 1
+        Float Position
+        Color Color (Color)
+    }
+ 
+    Technique {
+        VertexShader GLSL100:   MatDefs/SpriteSheet.vert
+        FragmentShader GLSL100: MatDefs/SpriteSheet.frag
+ 
+        WorldParameters {
+            WorldViewProjectionMatrix        
+        }
+ 
+        Defines { 
+            HAS_COLORMAP : ColorMap
+            HAS_LIGHTMAP : LightMap
+            HAS_VERTEXCOLOR : VertexColor
+            HAS_COLOR : Color         
+        }
+    }
+ 
+}
